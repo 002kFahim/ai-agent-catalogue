@@ -14,7 +14,7 @@ A responsive and SEO-friendly catalog of AI agents built with Next.js, TypeScrip
 
 ## Live Demo
 
-[View on Vercel](https://ai-agent-catalogue.vercel.app/)
+[https://ai-agent-catalogue.vercel.app/]
 
 ## Technologies Used
 
