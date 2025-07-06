@@ -1,7 +1,37 @@
-import Image from "next/image";
+import { makeStore } from "@/lib/store";
+import { setAgents } from "@/lib/agentsSlice";
+import MainContent from "@/components/MainContent";
+import ReduxProvider from "@/components/ReduxProvider";
+import { Agent } from "@/types/agent";
 
-export default function Home() {
+export async function generateMetadata() {
+  const agents = await getAgents();
+  const agentCount = agents.length;
+
+  return {
+    title: `ArkLab - ${agentCount} AI Agents`,
+    description: `Discover ${agentCount} powerful AI agents tailored to automate business tasks, improve workflows, and enhance productivity.`,
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+async function getAgents() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const data = await import("@/data/mock-agents.json");
+  return data.default;
+}
+
+export default async function Home() {
+  const agents = await getAgents();
+  const store = makeStore();
+  store.dispatch(setAgents(agents as Agent[]));
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"></div>
+    <ReduxProvider preloadedState={store.getState()}>
+      <MainContent />
+    </ReduxProvider>
   );
 }
