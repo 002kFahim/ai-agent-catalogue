@@ -2,14 +2,14 @@
 
 import { useRef } from "react";
 import { Provider } from "react-redux";
-import { makeStore, AppStore } from "@/lib/store";
+import { makeStore, AppStore, RootState } from "@/lib/store";
 
 export default function ReduxProvider({
   children,
   preloadedState,
 }: {
   children: React.ReactNode;
-  preloadedState: any;
+  preloadedState: RootState;
 }) {
   const storeRef = useRef<AppStore | null>(null);
   if (!storeRef.current) {
