@@ -37,8 +37,8 @@ A responsive and SEO-friendly catalog of AI agents built with Next.js, TypeScrip
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/ai-agent-catalog.git
-cd ai-agent-catalog
+git clone https://github.com/your-username/ai-agent-catalogue.git
+cd ai-agent-catalogue
 ```
 
 2. Install dependencies:
